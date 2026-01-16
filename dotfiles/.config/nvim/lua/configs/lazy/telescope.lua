@@ -19,17 +19,22 @@ return {
             require("telescope").load_extension("ui-select")
 
             local builtin = require('telescope.builtin')
-            -- Regular find_files without hidden files
-            vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+            -- Find files including hidden files (dotfiles)
+            vim.keymap.set('n', '<leader>pf', function()
+                builtin.find_files({
+                    hidden = true,
+                    file_ignore_patterns = { "^.git/" }
+                })
+            end, {})
 
-            -- New keybinding for finding hidden files
+            -- New keybinding for finding hidden files including ignored files
             vim.keymap.set('n', '<leader>ph', function()
                 builtin.find_files({
                     hidden = true,
                     no_ignore = true,
                     follow = true
                 })
-            end, { desc = "Find hidden files" })
+            end, { desc = "Find all files (including ignored)" })
 
             vim.keymap.set('n', '<C-p>', builtin.git_files, {})
             vim.keymap.set('n', '<leader>pws', function()
