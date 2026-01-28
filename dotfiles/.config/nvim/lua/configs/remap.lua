@@ -24,4 +24,7 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
 
 -- formats the selected json in json format
-vim.keymap.set("v", "jq", "!jq .<CR>")
+-- vim.keymap.set("v", "jq", "!jq .<CR>")
+
+-- clear highlight on pressing escape in normal mode
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
