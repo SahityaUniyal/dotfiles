@@ -5,6 +5,7 @@ My dotfiles and automated dev environment setup for macOS and Linux
 ## 📦 What's Included
 
 ### Tools & Packages
+
 - **Shell**: Zsh with Oh My Zsh
 - **Theme**: Powerlevel10k
 - **Plugins**: zsh-autosuggestions
@@ -16,9 +17,9 @@ My dotfiles and automated dev environment setup for macOS and Linux
 - **JavaScript**: npm
 
 ### Dotfiles
+
 - `.zshrc` - Zsh configuration
 - `.tmux.conf` - Tmux configuration
-- `.gitconfig` - Git configuration
 - `.vimrc` - Vim configuration
 - `.p10k.zsh` - Powerlevel10k theme configuration
 - `.config/nvim/` - Neovim configuration
@@ -26,6 +27,7 @@ My dotfiles and automated dev environment setup for macOS and Linux
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - macOS, Ubuntu, Fedora, or Arch Linux
 - `git` installed
 - `curl` installed (usually pre-installed)
@@ -33,12 +35,14 @@ My dotfiles and automated dev environment setup for macOS and Linux
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ```
 
 2. Run the install script:
+
 ```bash
 chmod +x install.sh
 ./install.sh
@@ -49,6 +53,7 @@ chmod +x install.sh
 ### First Time Setup
 
 After installation:
+
 - Run `p10k configure` to customize your Powerlevel10k theme (optional)
 - Your configuration will be saved to `.p10k.zsh`
 
@@ -58,9 +63,9 @@ After installation:
 
 1. Add your dotfile to the `dotfiles/` directory
 2. Update the `DOTFILES_HOME` array in `install.sh`:
+
 ```bash
 DOTFILES_HOME=(
-    ".gitconfig"
     ".zshrc"
     ".tmux.conf"
     ".vimrc"
@@ -76,6 +81,7 @@ Simply add new directories to `dotfiles/.config/` - they'll be automatically sym
 ### Adding Packages
 
 Add package names to the `package_list` array in `install.sh`:
+
 ```bash
 package_list=(
     "git"
@@ -89,6 +95,7 @@ package_list=(
 ## 🔄 Updating
 
 To update your dotfiles:
+
 ```bash
 cd ~/dotfiles
 git pull

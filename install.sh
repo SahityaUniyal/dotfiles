@@ -148,7 +148,6 @@ echo "Setting up dotfiles..."
 if [ -d "$DOTFILES_DIR" ]; then
 	# Explicit allowlist of dotfiles to symlink
 	DOTFILES_HOME=(
-		".gitconfig"
 		".zshrc"
 		".tmux.conf"
 		".vimrc"
