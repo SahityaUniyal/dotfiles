@@ -28,3 +28,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
 
 -- clear highlight on pressing escape in normal mode
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+-- quickfix  list navigation
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
