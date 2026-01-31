@@ -178,6 +178,7 @@ package_list=(
     "npm"
     "ripgrep"
     "jq"
+    "fzf"
 )
 for package in "${package_list[@]}"; do
     install_package "$package"
