@@ -121,14 +121,49 @@ oh_my_zsh_plugins_setup() {
 }
 
 install_ghostty() {
-    if rpm -q ghostty &>/dev/null; then
-        echo "ghostty is already installed, skipping"
-        return 0
-    fi
+    echo "Installing ghostty using $INSTALLER"
 
-    echo "installing ghostty"
-    sudo dnf copr enable scottames/ghostty -y
-    sudo dnf install ghostty -y
+    case "$INSTALLER" in
+        dnf)
+            if rpm -q ghostty &>/dev/null; then
+                echo "ghostty is already installed, skipping"
+                return 0
+            fi
+
+            echo "installing ghostty (Fedora)"
+            sudo dnf copr enable scottames/ghostty -y
+            sudo dnf install ghostty -y
+            ;;
+
+        apt)
+            if dpkg -s ghostty &>/dev/null; then
+                echo "ghostty is already installed, skipping"
+                return 0
+            fi
+
+            echo "installing ghostty (Ubuntu/Debian)"
+            # Official Ghostty install script sets up the apt repo
+            curl -fsSL https://ghostty.org/install.sh | sh
+            sudo apt update
+            sudo apt install ghostty -y
+            ;;
+
+        pacman)
+            if pacman -Qi ghostty &>/dev/null; then
+                echo "ghostty is already installed, skipping"
+                return 0
+            fi
+
+            echo "installing ghostty (Arch)"
+            sudo pacman -Sy --noconfirm ghostty
+            ;;
+
+        *)
+            echo "ghostty install not supported for installer: $INSTALLER"
+            return 1
+            ;;
+    esac
+
 }
 
 # Start the installation process
