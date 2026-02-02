@@ -32,3 +32,9 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- quickfix  list navigation
 vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz")
+
+for _, mode in pairs({ "n", "i", "v", "x" }) do
+	for _, key in pairs({ "<Up>", "<Down>", "<Left>", "<Right>" }) do
+		vim.keymap.set(mode, key, "<nop>")
+	end
+end
