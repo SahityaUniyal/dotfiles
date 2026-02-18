@@ -70,7 +70,6 @@ return {
 				"lua_ls",
 				"gopls",
 				"pyright",
-				"gopls",
 				"harper_ls",
 			},
 			handlers = {
