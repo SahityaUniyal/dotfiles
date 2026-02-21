@@ -26,9 +26,17 @@ return {
 		local null_ls = require("null-ls")
 		null_ls.setup({
 			sources = {
+				-- go
 				null_ls.builtins.formatting.goimports,
 				null_ls.builtins.diagnostics.golangci_lint,
 				null_ls.builtins.code_actions.gomodifytags,
+
+				-- python
+				null_ls.builtins.formatting.black,
+				null_ls.builtins.formatting.isort,
+
+				-- C
+				null_ls.builtins.formatting.clang_format,
 			},
 		})
 
@@ -62,6 +70,11 @@ return {
 				-- Python Formatters
 				"black", -- Auto-format Python code (PEP8 compliant")
 				"isort", -- Sort import"s
+				-- C
+				"clang_format",
+				"clangd",
+				-- Debugging
+				"delve",
 			},
 		})
 		-- LSP Server Setup
