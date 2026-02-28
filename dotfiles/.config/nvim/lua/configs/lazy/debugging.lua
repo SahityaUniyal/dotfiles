@@ -27,6 +27,13 @@ return {
 				dapui.close()
 			end
 
+			vim.fn.sign_define("DapBreakpoint", {
+				text = "●",
+				texthl = "DiagnosticError",
+				linehl = "",
+				numhl = "",
+			})
+
 			vim.keymap.set("n", "<Leader>b", dap.toggle_breakpoint, {})
 			vim.keymap.set("n", "<Leader>B", function()
 				dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
