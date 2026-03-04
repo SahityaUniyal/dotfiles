@@ -19,10 +19,13 @@ My dotfiles and automated dev environment setup for macOS and Linux
 ### Dotfiles
 
 - `.zshrc` - Zsh configuration
+- `.zshrc_alias` - Custom aliases
 - `.tmux.conf` - Tmux configuration
 - `.vimrc` - Vim configuration
 - `.p10k.zsh` - Powerlevel10k theme configuration
 - `.config/nvim/` - Neovim configuration
+- `.config/ghostty/` - Ghostty terminal configuration
+
 
 ## 🚀 Quick Start
 
@@ -61,22 +64,11 @@ After installation:
 
 ### Adding New Dotfiles
 
-1. Add your dotfile to the `dotfiles/` directory
-2. Update the `DOTFILES_HOME` array in `install.sh`:
-
-```bash
-DOTFILES_HOME=(
-    ".zshrc"
-    ".tmux.conf"
-    ".vimrc"
-    ".p10k.zsh"
-    ".your-new-file"  # Add here
-)
-```
+Add your dotfiles (starting with `.`) to the `dotfiles/` directory - it will be automatically symlinked to `$HOME`.
 
 ### Adding .config Files
 
-Simply add new directories to `dotfiles/.config/` - they'll be automatically symlinked to `~/.config/`
+Add files or directories to `dotfiles/.config/` - they'll be automatically symlinked to `~/.config/`
 
 ### Adding Packages
 
@@ -90,14 +82,4 @@ package_list=(
     "neovim"
     "your-package"  # Add here
 )
-```
-
-## 🔄 Updating
-
-To update your dotfiles:
-
-```bash
-cd ~/dotfiles
-git pull
-./install.sh  # Re-run to update symlinks
 ```
