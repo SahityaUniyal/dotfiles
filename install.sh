@@ -197,17 +197,15 @@ oh_my_zsh_plugins_setup
 # Setup dotfiles (after plugins to avoid conflicts)
 echo "Setting up dotfiles..."
 if [ -d "$DOTFILES_DIR" ]; then
-    # Explicit allowlist of dotfiles to symlink
-    DOTFILES_HOME=(
-        ".zshrc"
-        ".tmux.conf"
-        ".vimrc"
-        ".p10k.zsh"
-    )
-
-    for file in "${DOTFILES_HOME[@]}"; do
-        if [ -f "$DOTFILES_DIR/$file" ]; then
-            create_symlink "$DOTFILES_DIR/$file" "$HOME/$file"
+    # symlink the files that start with . in DOTFILES_DIR
+    for file in "$DOTFILES_DIR"/.*; do
+        filename=$(basename "$file")
+        if [[ "$filename" == "." ]] || [[ "$filename" == ".." ]] || [[ "$filename" == ".config" ]];then
+            continue
+        fi
+        # symlink files
+        if [[ -f "$file" ]];then
+            create_symlink "$file" "$HOME/$filename"
         fi
     done
 
@@ -218,10 +216,10 @@ if [ -d "$DOTFILES_DIR" ]; then
         mkdir -p "$HOME/.config"
 
         # Symlink each subdirectory in .config
-        for config_dir in "$DOTFILES_DIR/.config"/*; do
-            if [ -d "$config_dir" ]; then
-                dirname=$(basename "$config_dir")
-                create_symlink "$config_dir" "$HOME/.config/$dirname"
+        for config_item in "$DOTFILES_DIR/.config"/*; do
+            if [ -e "$config_item" ]; then
+                dirname=$(basename "$config_item")
+                create_symlink "$config_item" "$HOME/.config/$dirname"
             fi
         done
     fi

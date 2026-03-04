@@ -118,5 +118,6 @@ fpath=(/Users/suniyal/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
-source <(fzf --zsh)
+command -v fzf &>/dev/null && source <(fzf --zsh)
 
+[[ ! -f ~/.zshrc_alias ]] || source ~/.zshrc_alias

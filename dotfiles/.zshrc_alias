@@ -1,0 +1,9 @@
+tm() {
+    local session
+    session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf)
+    if [ -n "$session" ]; then
+        tmux switch-client -t "$session"
+    else
+        tmux attach -t "$session"
+    fi
+}
