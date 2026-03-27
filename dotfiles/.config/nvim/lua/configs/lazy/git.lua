@@ -65,4 +65,11 @@ return {
 			})
 		end,
 	},
+	{
+		"tpope/vim-rhubarb",
+		dependencies = {
+			"tpope/vim-fugitive",
+		},
+		-- lazy = true,
+	},
 }
