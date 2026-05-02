@@ -1,5 +1,9 @@
 alias vi="nvim"
 
+# git alias
+git config --global alias.dbs &>/dev/null || \
+    git config --global alias.dbs '!f() { branches=$(git branch --format="%(refname:short)" | fzf --multi); [[ -n "$branches" ]] && echo "$branches" | xarg git branch -D; }; f'
+
 _tmux_attach() {
     if [[ -n "$TMUX" ]]; then
         tmux switch-client -t "$1"
