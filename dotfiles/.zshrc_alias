@@ -1,12 +1,27 @@
 alias vi="nvim"
+
+_tmux_attach() {
+    if [[ -n "$TMUX" ]]; then
+        tmux switch-client -t "$1"
+    else
+        tmux attach -t "$1"
+    fi
+}
+
 tm() {
     local session
     session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf)
     if [[ -n "$session" ]]; then
-        if [[ -n "$TMUX" ]]; then
-            tmux switch-client -t "$session"
-        else
-            tmux attach -t "$session"
-        fi
+        _tmux_attach "$session"
     fi
 }
+
+# Adding new session command
+# <command_name>{
+#     local session="<session_name>"
+#     if ! tmux has-session -t $session 2>/dev/null; then
+#         tmux new-session -d -s $session -n <window_name> -c <window_path>
+#         tmux new-window -a -t $session -n <window_name> -c <window_path>
+#     fi
+#     _tmux_attach $session
+# }
