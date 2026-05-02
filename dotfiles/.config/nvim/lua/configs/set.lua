@@ -15,3 +15,5 @@ vim.opt.breakindent = true
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
+
+vim.opt.foldlevelstart = 99
