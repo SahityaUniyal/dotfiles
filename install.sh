@@ -179,6 +179,7 @@ package_list=(
     "ripgrep"
     "jq"
     "fzf"
+    "tree-sitter-cli"
 )
 for package in "${package_list[@]}"; do
     install_package "$package"
