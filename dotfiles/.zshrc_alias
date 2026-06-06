@@ -21,7 +21,7 @@ tm() {
 }
 
 # Adding new session command
-# <command_name>{
+# <command_name>(){
 #     local session="<session_name>"
 #     if ! tmux has-session -t $session 2>/dev/null; then
 #         tmux new-session -d -s $session -n <window_name> -c <window_path>
